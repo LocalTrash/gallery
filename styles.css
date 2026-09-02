@@ -1,3 +1,4 @@
+/* Reset default browser spacing for predictable layout. */
 * {
 	margin: 0;
 	padding: 0;
@@ -13,17 +14,28 @@
 	
 */
 
+/* Global page typography, colors, scrolling, and background. */
 body, html {
 	height: 100%;
 	font-family: "Space Mono", monospace;
+	color: rgb(120, 70, 80);
+	scroll-behavior: smooth;
+	background-color: #f8f4f8;
 }
 
-/* Gallery Styles */
+/* Apply the paper texture to the main gallery area. */
+main {
+	background-color: #ffffff;
+	background-image: url("images/papertex2.avif");
+	background-repeat: repeat;
+	background-size: auto;
+}
+
+/* Gallery header and hero artwork. */
 #gallery_header {
 	background-color: #f8f4f8;
 	position: relative;
  	margin: 0;
-	margin-bottom: 1.5em;
 	padding: 0;
 	height: 100%;
 	overflow: hidden;
@@ -31,6 +43,7 @@ body, html {
 
 #gallery_header_img {
 	height: 100%;
+	background-color: #f8f4f8;
 	background-image: url("https://i.imgur.com/3RKasZm.png");
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -52,6 +65,16 @@ body, html {
 	text-shadow: -1.5px 0 white, 0 1.5px white, 1.5px 0 white, 0 -1.5px white;
 	color: rgb(120, 70, 80);
 	animation: fadeIn 1.5s ease-in-out;
+	line-height: 70%;
+}
+
+#gallery_header h1 span {
+	font-size: calc(10px + 2.5vw);
+	font-family: "Space Mono", monospace;
+	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+	color: rgb(120, 70, 80);
+	text-decoration: underline;
+	line-height: 50%;
 }
 
 #gallery_header_links {
@@ -64,7 +87,7 @@ body, html {
 	position: relative;
 	justify-content: right;
 	text-align: left;
-	animation: fadeInLinks 4s ease-in-out;
+	animation: fadeInLinks 2.5s ease-in-out;
 }
 
 #gallery_header_links a {
@@ -83,11 +106,11 @@ body, html {
 	transform: translate(5%, 0%);
 }
 
-
+/* Header entrance animations. */
 @keyframes fadeInLinks {
 	0% {opacity: 0;}
 	50% {opacity: 0;
-	transform: translate(0, -25%);}
+	transform: translate(-5%, 0);}
 	100% {opacity: 1;
 	transform: translate(0, 0);}
 }
@@ -104,8 +127,41 @@ body, html {
 	transform: translate(0, -50%);}
 }
 
+/* Year navigation bar. */
+#gallery_nav {
+	background-color: rgb(120, 70, 80);
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	display: flex;
+	font-family: "Geo", monospace;
+}
+
+#gallery_nav a {
+	text-decoration: none;
+	color: #f8f4f8;
+	font-size: calc(10px + 1.5vw);
+	padding: 0 0.5em;
+	transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+	height: 100%;
+}
+
+#gallery_nav p {
+	color: #f8f4f8;
+	font-size: calc(10px + 1.5vw);
+	position: absolute;
+	left: 10%;
+}
+
+#gallery_nav a:hover {
+	background-color: #f8f4f8;
+	color: rgb(120, 70, 80);
+}
+
+/* Arrange artwork entries within each year. */
 div.gallery_year {
-	max-width: 100vw;
+	margin-left: 5%;
+	margin-right: 5%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
@@ -115,7 +171,6 @@ div.gallery_year {
 div.entry {
 	margin: 2em 2.5%;
 	height: 50vh;
-	max-width: 30vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -131,35 +186,76 @@ div.entry p {
 	text-align: center;
 }
 
+/* Sticky heading used to identify each year. */
+.year_header_container {
+	height: calc(2em + 4vw);
+	margin-top: 1em;
+	margin-left: 5%;
+	margin-right: 5%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 90%;
+	border-bottom: 1px solid rgb(120, 70, 80);
+	background-color: #f8f4f8;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+
+div.year_header_container a {
+	text-decoration: none;
+	color: rgb(120, 70, 80);
+	font-size: calc(12px + 0.3vw);
+	position: absolute;
+	right: 5%;
+	align-items: center;
+	text-decoration: underline;
+}
+
+/* Constrain the gallery content and provide its paper-colored surface. */
+#gallery_container {
+	width: 90%;
+	margin: 0 auto;
+	background-color: #f8f4f8;
+}
+
 h2.year_header {
-	padding-left: 5%;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0%);
 	font-size: calc(45px + 1vw);
-	border-bottom: 1px solid black;
-	margin-top: calc(1em + 1vw);
-	margin-bottom: 0.5em;
+	/* border-bottom: 1px solid black; */
+	font-family: "Cherry Bomb One", system-ui;
 }
 
 #top {
 	margin-top: 0;
 }
 
-h2 button {
-	display: flex;
-	float: right;
-	margin-right: 5%;
-	font-size: calc(15px + 0.5vw);
-	margin-top: 1em;
-	font-family: "Space Mono", monospace;
-}
-
+/* Tablet layout adjustments. */
 @media (max-width: 1080px) {
 	div.entry {
 		height: 50vh;
-		max-width: 90vw;
 	}
 
+	.year_header_container {
+		width: 100%;
+		margin: 0;
+	}
+
+	#gallery_container {
+		width: 100%;
+		margin: 0;
+	}
+
+	#gallery_nav p {
+		display: none;
+	}
 }
 
+/* Mobile layout: stack entries and make images fluid. */
 @media (max-width: 720px) {
 	div.gallery_year {
 		flex-direction: column;
@@ -169,7 +265,6 @@ h2 button {
 	div.entry {
 		margin: 1em 0;
 		height:auto;
-		max-width: 90vw;
 	}
 
 	div.entry img {
