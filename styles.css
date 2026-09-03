@@ -87,7 +87,7 @@ main {
 	position: relative;
 	justify-content: right;
 	text-align: left;
-	animation: fadeInLinks 2.5s ease-in-out;
+	animation: fadeInLinks 1.5s ease-in-out;
 }
 
 #gallery_header_links a {
@@ -103,13 +103,17 @@ main {
 	top: 0%;
 	left: 0%;
 	background-position: none;
+	opacity: 0.3;
 	transform: translate(5%, 0%);
+}
+
+#gallery_header_links a:hover img {
+	opacity: 1;
 }
 
 /* Header entrance animations. */
 @keyframes fadeInLinks {
-	0% {opacity: 0;}
-	50% {opacity: 0;
+	0% {opacity: 0;
 	transform: translate(-5%, 0);}
 	100% {opacity: 1;
 	transform: translate(0, 0);}
@@ -127,8 +131,41 @@ main {
 	transform: translate(0, -50%);}
 }
 
+/* Scroll buffer */
+
+#scroll_buffer {
+	width: 100%;
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#scroll_buffer {
+	display: none;
+}
+
+#scroll_buffer img {
+	display: flex;
+	flex-direction: column;
+	width: auto;
+	height: 45vh;
+	margin-bottom: -8%;
+	/* animation: fadeInChud 30s ease-in-out; */
+}
+
+/* @keyframes fadeInChud {
+	0% {opacity: 0;}
+	50% {opacity: 0;}
+	51% {opacity: 1;}
+	52% {opacity: 0;}
+	100% {opacity: 0;}
+} */
+
 /* Year navigation bar. */
 #gallery_nav {
+	position: relative;
+	z-index: 5;
 	background-color: rgb(120, 70, 80);
 	width: 100%;
 	justify-content: center;
@@ -178,12 +215,17 @@ div.entry {
 
 div.entry img {
 	width: auto;
-	height: 100%;
+	height: 93%;
 }
 
 div.entry p {
-	font-size: calc(1em + 1vw);
+	height: 7%;
+	width: 100%;
+	font-size: calc(15px + 0.7vw);
 	text-align: center;
+	align-items: center;
+	background-color: rgb(120, 70, 80);
+	color: #f8f4f8;
 }
 
 /* Sticky heading used to identify each year. */
@@ -197,7 +239,7 @@ div.entry p {
 	align-items: center;
 	text-align: center;
 	width: 90%;
-	border-bottom: 1px solid rgb(120, 70, 80);
+	border-bottom: 2px solid rgb(120, 70, 80);
 	background-color: #f8f4f8;
 	position: sticky;
 	top: 0;
@@ -243,6 +285,12 @@ h2.year_header {
 	.year_header_container {
 		width: 100%;
 		margin: 0;
+	}
+
+	
+	#scroll_buffer img {
+		width: 33%;
+		height: auto;
 	}
 
 	#gallery_container {
